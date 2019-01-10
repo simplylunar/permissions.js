@@ -9,4 +9,4 @@ For security reasons, you must have a verified email, and wait 10 minutes before
 No, we ask that you follow all rules in the server, Discord's [Terms of Service](https://dicordapp.com/terms) and [Community Guidelines](https://discordapp.com/guidelines). 
 ## What can I do?
 In this server you can chat with people about anything you want, as long as it isn't against our rules. You could ask for help, request features or report bugs. You could ask for JavaScript development help too.
-{% include note.html content="This is just a friendly reminder that you may ask for help, but only our verified Helpers can answer questions regarding to Permissions. (Other questions are fair game!) If you know this module very well, you will get a quiz, and if you pass you get the Helper role!" %}
+{% include notice.html content="This is just a friendly reminder that you may ask for help, but only our verified Helpers can answer questions regarding to Permissions. (Other questions are fair game!) If you know this module very well, you will get a quiz, and if you pass you get the Helper role!" %}
