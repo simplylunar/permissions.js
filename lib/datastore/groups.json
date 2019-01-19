@@ -1,0 +1,20 @@
+{
+  "groups": {
+    "default": {
+      "settings": {
+        "default": true,
+        "parent": null
+      },
+      "positive": [ "permission.systemCheck" ],
+      "negative": [ "permission.admin" ]
+    },
+    "admin": {
+      "settings": {
+        "default": false,
+        "parent": "default"
+      },
+      "positive": [ "permission.admin" ],
+      "negative": [ ]
+    }
+  }
+}

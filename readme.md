@@ -1,51 +1,35 @@
 # Home
 ## About
-Permissions is about making managing user permissions easier. You can create your own permissions, roles, users and more are soon to come! Permissions is an easy way to see what user's have access to. You could use integrate this with any NodeJS application! Permissions is also made to be as simple as possible. Check out the [examples](http://permissions.js.org/examples.md)! 
+Permissions is all about making your user management as easy as possible!
+You can create your own groups and roles. Add users to them for simple but highly customizable permissions and access management for any services.
+Need some tips? [Check Out Here](https://permissions.js.org/examples)
 
 ## Installation
 
-Installation is easy!
-
-`$ npm i permissions`
-
-I don't think you needed me for that, though.
+Installing Permissions.JS is simple as can be!
+```
+$ npm install --save permissions
+```
 
 ## Configuration
-At the moment you can't configure anything, but it will come soon!
+```js
+const PermsJS = require('permissions.js')
+const Permissions = new PermsJS({
+    storageSystem: 'json', // or sqlite (sqlite is reccomended)
+    storageFile: 'permissions.json', // file or database name
+    autoSave: true, // or false
+    prefix: '', // prefix for nodes (prefix.)admin.ban
+})
+```
 
 ## Usage
-For advanced usage please visit our [documentation](http://permissions.js.org/docs/latest/get_started.md). The following is just fo r quick reference.
+For advanced usage please visit our [documentation](http://permissions.js.org/docs/latest/get_started.md).
+The following is just for quick reference.
+
 ### Declaring Permissions Requirement
 ```js
-const permissions = require('permissions');
-```
-### Adding Permissions
-```js
+const permissions = require('permissions.js');
 const permissionsToAdd = ["a", "b"];
 const permissionsFile = 'permissions.json';
 permissions.savePermissions(permissionsToAdd, permissionsFile);
-```
-### Adding Users
-```js
-/*
-    DO NOT CONFUSE .newUser(); and new User(); THE LATTER WILL CAUSE ERRORS!!
-*/
-let userID = "7818"; //id MUST be a string!!
-let usersFile = './users.json';
-let permissions = ["a", "b"]; //in this case a single * permission will work
-let roles = []; //roles are coming soon!!
-permissions.newUser(userID, usersFile, permissions, roles);
-```
-### Loading Permissions/Users
-```js
-/*
-    LOADING PERMISSIONS AND USERS IS CRUCIAL
-*/
-permissions.loadPermissions(permissionsFile);
-permissions.loadUsers(usersFile);
-```
-### Check for Users Permission to Do X
-```js
-    // make sure users are loaded!!
-    can = permissions.hasPermission(userID, 'a')) //returns true
 ```
