@@ -1,62 +1,26 @@
-/**
- * @description PermissionsJS Master System
- * @author Daniel Newell
- * @author Samuel Voeller
- * @class PermsissionJS
- */
-class PermsissionJS {
-/**
-     *Creates an instance of PermsissionJS.
-     * @author Daniel Newell
-     * @author Samuel Voeller
-     * @param {object} [opts={
-     *         storageSystem: 'json',
-     *         storageFile: 'permissions.json',
-     *         autoSave: true,
-     *         prefix: ''
-     *     }]
-     * @memberof PermsissionJS
-     */
-    constructor(opts = {
-        storage: { system: 'json', perms: 'groups.json', users: 'users.json' },
-        autoSave: true,
-        prefix: ''
-    }) {
-        // Place Resources to Scope
-        this.opts = opts
-        this.system = null
-        this.logger = new EventEmitter()
-        // Initialize Selected Storage System
-        switch(this.opts.storage.system) {
-            case 'json': {
-                // TODO: Create JSON Subsystem
-                this.logger.emit('warning', 'Use of JSON is not reccomended. JSON is prone to corruption.')
-                this.system = new JSONSystem(this.opts)
-                break
-            }
-            case 'sqlite': {
-                // TODO: Create SQLITE Subsystem
-                this.system = new SQLiteSystem(this.opts)
-                break
-            }
-            default: {
-                throw new Error('unsupported storage type')
-            }
-        }
+class PermissionsJS {
+  constructor(opts = {
+    type: 'json'
+  }) {
+    this.opts = opts
+  }
+  async initialize () {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // Load Selected Database Store
+        this.LoaderRaw = await require(`./library/stores/${this.opts.type}.js`)
+        this.raw = new this.LoaderRaw(this.opts)
+        await this.raw.initialize()
 
-        // Return Selected System after Initialization
-        return this.system
-    }
-}
+        // Apply Database Accessers
+        this.reload = this.raw.reload
+        this.save = this.raw.save
 
-class JSONSystem {
-    constructor(opts) {
-        this.opts = opts
-    }
+        return resolve()
+      } catch (err) {
+        return reject(err)
+      }
+    })
+  }
 }
-
-class SQLiteSystem {
-    constructor(opts) {
-        this.opts = opts
-    }
-}
+module.exports = PermissionsJS
