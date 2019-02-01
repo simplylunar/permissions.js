@@ -1,8 +1,7 @@
 # Home
 # [Home](http://permissions.js.org/index.md) || [Documentation](http://permissions.js.org/docs/latest/index.md) || [Get Started](http://permissions.js.org/docs/latest/get_started.md) || [Support Server](http://permissions.js.org/discord.md)
 ## About
-Permissions is about making managing user permissions easier. You can create your own permissions, roles, users and more are soon to come! Permissions is an easy way to see what user's have access to. You could use integrate this with any NodeJS application! Permissions is also made to be as simple as possible.
-
+PermissionsJS is a JavaScript library created to manage permissions. You can create users, permissions, and roles. With multiple ways to store data, you can easily choose how to store your data.
 ## Installation
 
 Installation is easy!
