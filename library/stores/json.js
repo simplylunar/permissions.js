@@ -5,6 +5,7 @@ class Loader {
   async initialize () {
     this.users = await fetchUsers(this.opts.userFile || 'users.json')
     this.groups = await fetchGroups(this.opts.groupFile || 'groups.json')
+    this.perms = await fetchPerms(this.opts.permsFile || 'perms.json')
   }
 }
 module.exports = Loader
